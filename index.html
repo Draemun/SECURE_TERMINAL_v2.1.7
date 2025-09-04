@@ -814,7 +814,14 @@
                     startHackingSequence();
                 }
             } else {
-                alert('ACCESS DENIED\n\nInvalid credentials.');
+                const errorDiv = document.createElement('div');
+                errorDiv.style.cssText = 'color:#ff4444; margin:20px 0; padding:15px; border:2px solid #ff4444; text-align:center; font-size:14px;';
+                errorDiv.innerHTML = 'ACCESS DENIED<br><br>Invalid credentials.';
+                const loginForm = document.querySelector('.login-form');
+                const existingError = loginForm.querySelector('.error-message');
+                if (existingError) existingError.remove();
+                errorDiv.className = 'error-message';
+                loginForm.appendChild(errorDiv);
                 document.getElementById('password').value = '';
             }
         }
@@ -968,10 +975,12 @@
         function handleNarrativeInput(event) {
             if (event.key === 'Enter') {
                 const input = event.target.value.toLowerCase();
-                if (input === 'y' || input === 'n') {
+                if (input === 'y') {
                     narrativeStep++;
                     document.getElementById('hackPrompt').style.display = 'none';
                     setTimeout(showNarrativeStep, 500);
+                } else if (input === 'n') {
+                    showExitMessage();
                 } else {
                     event.target.value = '';
                 }
@@ -1152,6 +1161,7 @@
         
         // Show High Council login
         function showHighCouncilLogin() {
+            document.getElementById('loginPage').style.display = 'none';
             const terminal = document.querySelector('.terminal-content');
             terminal.innerHTML = '<div class="section-header">► HIGH COUNCIL ACCESS</div><div class="login-form" style="max-width:400px; margin:50px auto;"><input type="text" class="login-input" value="HIGHCOUNCIL" readonly><input type="text" class="login-input" value="PURIFICATION" readonly><button class="login-submit" onclick="showMasterCodeInput()">LOG IN</button><button class="back-btn" onclick="goBack()">← BACK TO TERMINAL</button></div>';
             terminal.style.display = 'block';
@@ -1285,14 +1295,23 @@
         function handleMasterNarrativeInput(event) {
             if (event.key === 'Enter') {
                 const input = event.target.value.toLowerCase();
-                if (input === 'y' || input === 'n') {
+                if (input === 'y') {
                     masterNarrativeStep++;
                     document.getElementById('hackPrompt').style.display = 'none';
                     setTimeout(showMasterNarrativeStep, 500);
+                } else if (input === 'n') {
+                    showExitMessage();
                 } else {
                     event.target.value = '';
                 }
             }
+        }
+        
+        function showExitMessage() {
+            document.getElementById('hackPrompt').style.display = 'none';
+            const output = document.getElementById('hackOutput');
+            output.innerHTML = '<div style="color:#ff4444; font-size:24px; text-align:center; margin-top:50px; line-height:1.5;">PLEASE EXIT THE PLATFORM<br>PLEASE EXIT THE PLATFORM<br>PLEASE EXIT THE PLATFORM</div>';
+            setTimeout(goBack, 2000);
         }
         
 
@@ -1362,11 +1381,11 @@
         
         // Go back function
         function goBack() {
+            document.getElementById('hackingPage').style.display = 'none';
             const terminal = document.querySelector('.terminal-content');
             terminal.innerHTML = '<div class="boot-text"><div class="boot-line">[SYSTEM] Initializing secure connection...</div><div class="boot-line">[SYSTEM] Encryption protocols loaded: AES-256, RSA-4096</div><div class="boot-line">[SYSTEM] Firewall status: ACTIVE</div><div class="boot-line">[SYSTEM] Intrusion detection: ENABLED</div><div class="boot-line">[SYSTEM] Security clearance required for access</div><div class="boot-line">[SYSTEM] Terminal ready <span class="cursor">█</span></div></div><div class="login-section"><div class="section-header">► AUTHORIZED USER ACCOUNTS</div><div class="login-grid"><button class="login-btn" onclick="accessLogin(\'locke\')"><strong>LOCKE</strong><br>Security Level: ALPHA<br>Status: ONLINE</button><button class="login-btn" onclick="accessLogin(\'user2\')"><strong>COUNCIL</strong><br>Security Level: BETA<br>Status: ONLINE</button><button class="login-btn" onclick="accessLogin(\'user3\')"><strong>ARISTOCRAT</strong><br>Security Level: GAMMA<br>Status: ACTIVE</button><button class="login-btn" onclick="accessLogin(\'user4\')"><strong>AWAKE</strong><br>Security Level: DELTA<br>Status: ACTIVE</button></div></div><div class="system-info"><div class="section-header">► SYSTEM INFORMATION</div><div class="info-line">Server: CLASSIFIED-NODE-7</div><div class="info-line">Network: 192.168.xxx.xxx</div><div class="info-line">Uptime: 847:23:17</div><div class="info-line">Active connections: 4</div><div class="info-line">Last breach attempt: 00:00:00 ago</div></div>';
             terminal.style.display = 'block';
             document.getElementById('loginPage').style.display = 'none';
-            document.getElementById('hackingPage').style.display = 'none';
         }
         
         // Add some interactive terminal effects
