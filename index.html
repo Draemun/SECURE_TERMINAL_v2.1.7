@@ -957,7 +957,7 @@
                         setTimeout(typeChar, 30);
                     } else {
                         const promptDiv = document.getElementById('hackPrompt');
-                        promptDiv.innerHTML = '<input type="text" class="hack-input" id="narrativeInput" maxlength="1" onkeypress="handleNarrativeInput(event)" oninput="handleNarrativeInput(event)" style="width:30px">';
+                        promptDiv.innerHTML = '<input type="text" class="hack-input" id="narrativeInput" maxlength="1" onkeypress="handleNarrativeInput(event)" style="width:30px">';
                         promptDiv.style.display = 'block';
                         document.getElementById('narrativeInput').focus();
                         document.getElementById('hackingPage').scrollTop = document.getElementById('hackingPage').scrollHeight;
@@ -973,8 +973,8 @@
         }
         
         function handleNarrativeInput(event) {
-            const input = event.target.value.toLowerCase();
-            if (event.key === 'Enter' || event.type === 'input') {
+            if (event.key === 'Enter') {
+                const input = event.target.value.toLowerCase();
                 if (input === 'y') {
                     narrativeStep++;
                     document.getElementById('hackPrompt').style.display = 'none';
@@ -1241,7 +1241,7 @@
                             }, 2000);
                         } else {
                             const promptDiv = document.getElementById('hackPrompt');
-                            promptDiv.innerHTML = '<input type="text" class="hack-input" id="masterNarrativeInput" maxlength="1" onkeypress="handleMasterNarrativeInput(event)" oninput="handleMasterNarrativeInput(event)" style="width:30px">';
+                            promptDiv.innerHTML = '<input type="text" class="hack-input" id="masterNarrativeInput" maxlength="1" onkeypress="handleMasterNarrativeInput(event)" style="width:30px">';
                             promptDiv.style.display = 'block';
                             document.getElementById('masterNarrativeInput').focus();
                         }
@@ -1293,8 +1293,8 @@
         }
         
         function handleMasterNarrativeInput(event) {
-            const input = event.target.value.toLowerCase();
-            if (event.key === 'Enter' || event.type === 'input') {
+            if (event.key === 'Enter') {
+                const input = event.target.value.toLowerCase();
                 if (input === 'y') {
                     masterNarrativeStep++;
                     document.getElementById('hackPrompt').style.display = 'none';
