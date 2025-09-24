@@ -957,7 +957,7 @@
                         setTimeout(typeChar, 30);
                     } else {
                         const promptDiv = document.getElementById('hackPrompt');
-                        promptDiv.innerHTML = '<input type="text" class="hack-input" id="narrativeInput" maxlength="1" onkeypress="handleNarrativeInput(event)" style="width:30px">';
+                        promptDiv.innerHTML = '<input type="text" class="hack-input" id="narrativeInput" maxlength="1" onkeypress="handleNarrativeInput(event)" style="width:30px" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
                         promptDiv.style.display = 'block';
                         document.getElementById('narrativeInput').focus();
                         document.getElementById('hackingPage').scrollTop = document.getElementById('hackingPage').scrollHeight;
@@ -1241,7 +1241,7 @@
                             }, 2000);
                         } else {
                             const promptDiv = document.getElementById('hackPrompt');
-                            promptDiv.innerHTML = '<input type="text" class="hack-input" id="masterNarrativeInput" maxlength="1" onkeypress="handleMasterNarrativeInput(event)" style="width:30px">';
+                            promptDiv.innerHTML = '<input type="text" class="hack-input" id="masterNarrativeInput" maxlength="1" onkeypress="handleMasterNarrativeInput(event)" style="width:30px" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
                             promptDiv.style.display = 'block';
                             document.getElementById('masterNarrativeInput').focus();
                         }
