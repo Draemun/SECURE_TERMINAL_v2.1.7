@@ -959,7 +959,11 @@
                         const promptDiv = document.getElementById('hackPrompt');
                         promptDiv.innerHTML = '<input type="text" class="hack-input" id="narrativeInput" maxlength="1" onkeypress="handleNarrativeInput(event)" style="width:30px" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
                         promptDiv.style.display = 'block';
-                        document.getElementById('narrativeInput').focus();
+                        setTimeout(() => {
+                            const input = document.getElementById('narrativeInput');
+                            input.focus();
+                            input.click();
+                        }, 100);
                         document.getElementById('hackingPage').scrollTop = document.getElementById('hackingPage').scrollHeight;
                     }
                 }
@@ -1243,7 +1247,11 @@
                             const promptDiv = document.getElementById('hackPrompt');
                             promptDiv.innerHTML = '<input type="text" class="hack-input" id="masterNarrativeInput" maxlength="1" onkeypress="handleMasterNarrativeInput(event)" style="width:30px" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
                             promptDiv.style.display = 'block';
-                            document.getElementById('masterNarrativeInput').focus();
+                            setTimeout(() => {
+                                const input = document.getElementById('masterNarrativeInput');
+                                input.focus();
+                                input.click();
+                            }, 100);
                         }
                         document.getElementById('hackingPage').scrollTop = document.getElementById('hackingPage').scrollHeight;
                     }
