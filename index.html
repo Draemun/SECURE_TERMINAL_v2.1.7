@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SECURE_TERMINAL_v2.1.7</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <button class="omega-btn" onclick="toggleCipher()">Ω</button>
+    <button class="home-btn" onclick="goBack()">⌂</button>
+    
+    <div class="cipher-modal" id="cipherModal">
+        <div class="cipher-content">
+            <div class="section-header">► CAESAR CIPHER (SHIFT 8)</div>
+            <textarea class="cipher-input" id="cipherInput" placeholder="Enter text to encode/decode..."></textarea>
+            <div>
+                <button class="cipher-btn" onclick="caesarEncode()">ENCODE</button>
+                <button class="cipher-btn" onclick="caesarDecode()">DECODE</button>
+                <button class="cipher-btn" onclick="toggleCipher()">CLOSE</button>
+            </div>
+            <textarea class="cipher-output" id="cipherOutput" placeholder="Result will appear here..." readonly></textarea>
+        </div>
+    </div>
+    
+    <div class="matrix-bg" id="matrixBg"></div>
+    
+    <div class="terminal">
+        <div class="terminal-header">
+            <div class="terminal-title">SECURE_TERMINAL_v2.1.7 - CLASSIFIED ACCESS POINT</div>
+            <div class="terminal-controls">
+                <div class="control-btn"></div>
+                <div class="control-btn"></div>
+                <div class="control-btn"></div>
+            </div>
+        </div>
+        
+        <div class="terminal-content">
+            <div class="boot-text">
+                <div class="boot-line">[SYSTEM] Initializing secure connection...</div>
+                <div class="boot-line">[SYSTEM] Encryption protocols loaded: AES-256, RSA-4096</div>
+                <div class="boot-line">[SYSTEM] Firewall status: ACTIVE</div>
+                <div class="boot-line">[SYSTEM] Intrusion detection: ENABLED</div>
+                <div class="boot-line">[SYSTEM] Security clearance required for access</div>
+                <div class="boot-line">[SYSTEM] Terminal ready <span class="cursor">█</span></div>
+            </div>
+            
+            <div class="login-section">
+                <div class="section-header">► AUTHORIZED USER ACCOUNTS</div>
+                
+                <div class="login-grid">
+                    <button class="login-btn" onclick="accessLogin('locke')">
+                        <strong>LOCKE</strong><br>
+                        Security Level: ALPHA<br>
+                        Status: ONLINE
+                    </button>
+                    
+                    <button class="login-btn" onclick="accessLogin('user2')">
+                        <strong>COUNCIL</strong><br>
+                        Security Level: BETA<br>
+                        Status: ONLINE
+                    </button>
+                    
+                    <button class="login-btn" onclick="accessLogin('user3')">
+                        <strong>ARISTOCRAT</strong><br>
+                        Security Level: GAMMA<br>
+                        Status: ACTIVE
+                    </button>
+                    
+                    <button class="login-btn" onclick="accessLogin('user4')">
+                        <strong>AWAKE</strong><br>
+                        Security Level: DELTA<br>
+                        Status: ACTIVE
+                    </button>
+                </div>
+            </div>
+            
+            <div class="system-info">
+                <div class="section-header">► SYSTEM INFORMATION</div>
+                <div class="info-line">Server: CLASSIFIED-NODE-7</div>
+                <div class="info-line">Network: 192.168.xxx.xxx</div>
+                <div class="info-line">Uptime: 847:23:17</div>
+                <div class="info-line">Active connections: 4</div>
+                <div class="info-line">Last breach attempt: 00:00:00 ago</div>
+            </div>
+        </div>
+        
+        <div class="login-page" id="loginPage">
+            <div class="section-header">► SECURE LOGIN - LOCKE</div>
+            <div class="login-form">
+                <input type="text" class="login-input" id="username" placeholder="USERNAME" value="LOCKE" readonly>
+                <input type="password" class="login-input" id="password" placeholder="PASSWORD">
+                <button class="login-submit" onclick="authenticate()">ACCESS SYSTEM</button>
+                <button class="back-btn" onclick="goBack()">← BACK TO TERMINAL</button>
+                <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #00ff41;">
+                    <div style="color: #ffff00; font-size: 12px; margin-bottom: 10px;">HIGH COUNCIL ACCESS</div>
+                    <button class="back-btn" onclick="showHighCouncilLogin()" style="width: 100%;">ENTER AS HIGHCOUNCIL</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="hacking-page" id="hackingPage">
+            <div id="hackOutput"></div>
+            <div class="hack-prompt" id="hackPrompt" style="display:none;">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit? (y/n): 
+                <input type="text" class="hack-input" id="hackInput" maxlength="1" onkeypress="handleHackInput(event)">
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
